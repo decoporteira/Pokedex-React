@@ -29,7 +29,7 @@ class AvatarImage extends Component {
       return {url: newUrl };
     });
   };
-
+ 
   render() {
     return (
       <img
