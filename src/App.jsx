@@ -1,39 +1,24 @@
 import './App.css'
-import { Button } from './components/button'
-import AvatarImage from './components/image'
 import AppRoutes from './pages/routes'
-import { createGlobalStyle } from 'styled-components'
+import GlobalStyle from './assets/styles/GlobalStyle'
+import { ThemeProvider } from './contexts/themeContext'
+import { ThemeTogglerButton } from './components/themeTogglerButton'
+import { useContext } from 'react'
+import { ThemeContext } from './contexts/themeContext'
+import GlobalStylesWrapper from './assets/styles/GlobalStyle'; // ✅ Importação correta
+
 
 function App() {
+  const { theme } = useContext(ThemeContext)
   return (
-    
     <>
-      <GlobalStyle />
-      <Button txt='Entrar' newClass="btn btn-primary"></Button>
-      <Button txt='Sair' newClass="btn btn-danger ms-1"/>
-      <AvatarImage  
-        alt='Ash'
-      />
-      <main>
-      <div className="album py-5 bg-body-tertiary">
-        <div className="container">
-          <div className="row">
-            <AppRoutes />
-          </div>
-        </div>
-
-      </div>      
-      </main>
-     
+      <ThemeProvider>
+        <ThemeTogglerButton />
+        <GlobalStylesWrapper /> 
+        <AppRoutes />     
+      </ThemeProvider>
     </>
   )
 }
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #728da8;
-  }
-
-`
 
 export default App

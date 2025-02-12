@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { getPokemon } from "../assets/services/getpokemons";
-import Card from "./card";
+import Card from "./cards/card";
 
 class PokemonList extends Component {
     constructor() {

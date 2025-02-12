@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Card from "../components/card"
+import Card from "../components/cards/card"
 
 async function fetchPokemon(id) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const data = await response.json()
-    console.log(data.name)
     return data
     
 } 
