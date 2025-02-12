@@ -3,5 +3,5 @@ const sayHello = () => {
 }
 
 export const Button = ({txt, newClass}) => {
-    return <button className={newClass} onClick={sayHello}>{txt}</button>
+    return <button  className={newClass} onClick={sayHello}>{txt}</button>
 }
