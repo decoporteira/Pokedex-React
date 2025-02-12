@@ -9,7 +9,7 @@ export const themes = {
     dark: {
         color: '#eeeeee',
         backgroundCard: '#21252b',
-        backgroundBody: '#24272b'
+        backgroundBody: '#2d3033'
     }
 }
 export const ThemeContext = createContext({});

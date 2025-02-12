@@ -1,9 +1,10 @@
-import { getPokemon } from "../assets/services/getpokemons";
-import Card from "./cards/card";
+import { getPokemon } from "../services/getPokemons";
+import Card from "../cards/card";
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { useContext } from "react";
 import  { ThemeContext }  from "../contexts/themeContext";
+import { Button } from "../buttons/button";
 
 const List = ({pokemonList}) => {
     return (
@@ -39,7 +40,8 @@ function PokemonList() {
             </Section>
             <Button  style={{
             color: theme.color, 
-            backgroundColor: theme.backgroundCard}} title="Carregar mais" onClick={() => {console.log('Clicou')}}>Carregar mais</Button>
+            backgroundColor: theme.backgroundCard}} title="Carregar mais" onClick={() => {console.log('Clicou')}}
+            className="btn">Carregar mais</Button>
         </>
         )
 }
@@ -53,24 +55,5 @@ const Section = styled.section`
   justify-content: center;
   margin-top: 20px;
 `
-const Button = styled.button`
-    border-color: #dc3545;
-    margin: 10px;
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition-duration: .3s; 
-    &:hover {
-      background-color: #81131e;
-      cursor: pointer;
-      transition-duration: .3s;  
-    }`
+
 export default PokemonList

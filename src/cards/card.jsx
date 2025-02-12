@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { useContext } from "react";
-import  { ThemeContext }  from "../../contexts/themeContext";
+import  { ThemeContext }  from "../contexts/themeContext";
 
 const Card = ({title, src, pokeNumber, type, color = 'red'}) => {
     const { theme } = useContext(ThemeContext)
