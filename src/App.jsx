@@ -9,8 +9,8 @@ function App() {
     <>
       <ThemeProvider>
         <ThemeTogglerButton />
-        <GlobalStylesWrapper /> 
-        <AppRoutes />     
+        <GlobalStylesWrapper />
+        <AppRoutes />
       </ThemeProvider>
     </>
   )

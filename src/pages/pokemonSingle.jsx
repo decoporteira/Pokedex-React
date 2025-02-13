@@ -26,7 +26,7 @@ export const PokemonSingle = () => {
         async function fetchData() {
             const data = await fetchPokemon(id);
             setPokemon(data);
-            
+
             const abilitiesWithTranslation = await Promise.all(
                 data.abilities.map(async (ability) => {
                     const abilityData = await fetchPokemonAbility(ability.ability.url);
@@ -43,7 +43,7 @@ export const PokemonSingle = () => {
             setAbilities(abilitiesWithTranslation);
         }
         fetchData();
-        
+
     }, [id]);
 
     return (

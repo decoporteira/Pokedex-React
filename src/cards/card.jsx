@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { useContext } from "react";
-import  { ThemeContext }  from "../contexts/themeContext";
+import { ThemeContext } from "../contexts/themeContext";
 
-const Card = ({title, src, pokeNumber, type, color = 'red'}) => {
+const Card = ({ title, src, pokeNumber, type, color = 'red' }) => {
     const { theme } = useContext(ThemeContext)
-    
+
     return (
         <Link to={`/pokemon/${pokeNumber}`}>
             <CardPokemon style={{
-                                color: theme.color, 
-                                backgroundColor: theme.backgroundCard}}>
-                <img className="card-img-top" width="60%"  src={src} />
+                color: theme.color,
+                backgroundColor: theme.backgroundCard
+            }}>
+                <img className="card-img-top" width="60%" src={src} />
                 <H4>{title}</H4>
-               {type}
+                {type}
             </CardPokemon>
         </Link>
     )

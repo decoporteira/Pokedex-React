@@ -1,49 +1,48 @@
 import { getPokemon } from "../services/getPokemons";
 import Card from "../cards/card";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, use } from "react";
 import styled from "styled-components";
 import { useContext } from "react";
-import  { ThemeContext }  from "../contexts/themeContext";
+import { ThemeContext } from "../contexts/themeContext";
 import { Button } from "../buttons/button";
 
-const List = ({pokemonList}) => {
+const List = ({ pokemonList }) => {
     return (
-        <>   
-            { pokemonList.map((pokemon, index) => (
-               
-                    <Card color='red' key={index} pokeNumber={index +1} title={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} ></Card>
-               
+        <>
+            {pokemonList.map((pokemon, index) => (
+
+                <Card color='red' key={index} pokeNumber={index + 1} title={pokemon.name} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} ></Card>
+
             ))}
         </>
     )
-   
+
 }
 function PokemonList() {
-    const { theme } = useContext(ThemeContext)
-    const [pokemonList, setPokemonList] =useState([])
-    
+    const { theme } = useContext(ThemeContext);
+    const [pokemonList, setPokemonList] = useState([]);
+
+    const fetchData = async () => {
+        const data = await getPokemon(pokemonList.length);
+        setPokemonList(prevList => [...prevList, ...data.results]);
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await getPokemon()
-            setPokemonList(data.results)
-        }
-        fetchData()
-       
-    }, [])
-    
-    
- 
+        fetchData();
+    }, []);
+
     return (
-        <> 
+        <>
             <Section>
                 <List pokemonList={pokemonList} ></List>
             </Section>
-            <Button  style={{
-            color: theme.color, 
-            backgroundColor: theme.backgroundCard}} title="Carregar mais" onClick={() => {console.log('Clicou')}}
-            className="btn">Carregar mais</Button>
+            <Button style={{
+                color: theme.color,
+                backgroundColor: theme.backgroundCard
+            }} title="Carregar mais" onClick={fetchData}
+                className="btn">Carregar mais</Button>
         </>
-        )
+    )
 }
 
 const Section = styled.section`
